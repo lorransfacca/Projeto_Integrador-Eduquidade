@@ -1,0 +1,62 @@
+<!--COMPONENTE MATÉRIAS-->
+<div class="container-fluid">
+  <div class="row">
+
+    <!-- HEADER -->
+    <div class="col-md-12 bg-navbar text-white">
+      <h1 class="fontsize54 text-center">Matérias</h1>
+      <h5 class="fontsize18 text-center mb-4">Veja todos as matérias cadastradas</h5>
+    </div>
+    <!-- HEADER -->
+    
+    <!-- PESQUISA -->
+    <div class="row mt-5 d-flex justify-content-center align-items-center">
+      <div class="col-md-10 d-flex justify-content-center align-items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+        viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+        </svg>
+        <div class="form-group ms-3">
+          <input type="text" class="form-control" id="materia" placeholder="Busca de matérias..."
+          [(ngModel)]='materiaPost' (keyup)='finByTituloTema()'>
+        </div>
+      </div>
+    </div>
+    <!-- PESQUISA -->
+
+    <!-- TABELA -->
+    <div class="row mt-3 mb-5 d-flex justify-content-center align-items-center">
+      <div class="col-md-10">
+        <div class="table-responsive">
+          <table class="table table-hover text-center align-middle">
+            <thead>
+              <tr>
+                <th scope="col">Matéria</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Ano do conteúdo</th>
+                <th scope="col">Modificações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor='let tema of listaTemas'>
+                <th>{{tema.materia}}</th>
+                <td class="text-wrap" style="width: 10rem;">{{tema.descricao}}</td>
+                <td>{{tema.anoConteudo}}</td>
+                <td>
+                  <button class="btn btn-info m-3 text-white" style="width: 5rem;" [routerLink]="['/materia-edit', tema.id]">Editar</button>
+                  <button class="btn btn-danger" style="width: 5rem;" [routerLink]="['/materia-delete', tema.id]">Apagar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="mt-5">
+          <button routerLink='/plataforma' class="btn btn-secondary text-white text-left">
+            <i class="fa fa-angle-double-left" aria-hidden="true"></i>⠀⠀Voltar
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- /TABELA -->
+    
+  </div>
+</div>
+<!--/COMPONENTE MATÉRIAS-->

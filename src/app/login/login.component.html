@@ -1,0 +1,57 @@
+<div class="container-fluid bg-login ">
+  <div class="row d-flex  ">
+    <div class="col-md-6 bg-white tela-cheia d-flex justify-content-center align-items-center">
+      <div>
+        <h1 class="text-center mb-3 mt-3 fs-principal">BEM VINDO!</h1>
+        <h3 class="text-center">Vamos realizar o seu login</h3>
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-12">
+            <div class="form-group mt-3">
+              <label for="email">E-mail:</label>
+              <input
+                (keydown.enter)="entrar()"
+                [(ngModel)]="userLogin.email"
+                class="form-control mt-1"
+                type="text"
+                name="email"
+                id="email"
+                placeholder="Seu email"
+              />
+              <div class="form-group mt-3">
+                <label for="Senha">Senha:</label>
+                <input
+                  (keydown.enter)="entrar()"
+                  [(ngModel)]="userLogin.senha"
+                  class="form-control mt-1"
+                  type="password"
+                  name="Senha"
+                  id="Senha"
+                  placeholder="Sua senha"
+                />
+              </div>
+              <div class="d-flex justify-content-center mt-3 align-items-center">
+                <a class="text-decoration-none" routerLink="/homepage">Voltar</a>
+                <button (click)="entrar()"type="button" class="ms-3 btn btn-primary">Entrar</button>
+                
+              </div>
+  
+              <hr class="mt-5 mb-5" />
+  
+              <p class="text-center">
+                Não tem uma conta? <a routerLink="/signin"> Cadastre-se aqui!</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-md-6 ">
+      <div class=" d-none d-lg-block ">
+        <div class="row p-0 m-0">
+          <img src="../../assets/img/login.svg" alt="" class="img-fluid" /> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

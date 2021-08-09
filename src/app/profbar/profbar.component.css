@@ -1,0 +1,32 @@
+
+.bg-2{
+    background-color: #e5e5e5;
+    background-position: bottom;
+    height: 40vh;
+}
+
+#profbar{
+/*     position: absolute;
+    bottom: 10em;*/
+    left: 15em;
+  /*   height: 40vh;
+    max-height: 300px; */
+    width: 30vw;
+}
+.fundo{
+    height: 60vh;
+}
+@media ( max-width:991px) {
+    #profbar{
+        left: 10em;
+    }
+}
+@media (max-width:767px) {
+    #profbar{
+        display: none;
+    }
+}
+
+.text-decoration-none:hover{
+    cursor: pointer;
+}

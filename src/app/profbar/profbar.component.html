@@ -1,0 +1,107 @@
+<div class="container fundo d-flex align-items-center justify-content-center">
+    <div class="row w-100 position-relative">
+    
+            <img class="position-absolute top-50 translate-middle" src="../../assets/img/Teacher-pana.png"  alt="" id="profbar">
+   
+        <div class="col-md-12 ">
+            <div class="row w-100 bg-2 d-flex justify-content-end align-items-center" >
+                <div class="col-md-6 mb-3 ">
+                    <h5>BEM VINDO, PROFESSOR!</h5>
+                    <p>Deseja postar algo novo para os seus alunos?</p>
+                    <div>
+                        <button data-bs-toggle="modal" data-bs-target="#addTema" class="btn btn-secondary me-3 mt-3">Cadastrar nova matéria</button>
+                        <button data-bs-toggle="modal" data-bs-target="#addPostagem" class="btn btn-secondary mt-3">Adicionar nova aula</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <!-- Modal criar tema -->
+  <div class="modal fade" id="addTema" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">CADASTRAR NOVA MATÉRIA</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-12">
+                    <div class="form-group mb-3">
+                        <input [(ngModel)]='tema.materia' type="text" class="form-control"  placeholder="Matéria">
+                    </div>
+
+                    <div class="form-group mb-3">
+                      <textarea [(ngModel)]='tema.descricao' type="text" class="form-control"  placeholder="Descrição da matéria" rows="4"></textarea>
+                    </div>
+                    <div>
+                    <option value="Escolha o ano" selected>Escolha o ano do conteúdo:</option>
+                    <select name="" [(ngModel)]='tema.anoConteudo' aria-label="Default select example" class="form-select mt-1">
+                      <option value="1º ano" >1º ano</option>
+                      <option value="2º ano" >2º ano</option>
+                      <option value="3º ano" >3º ano</option>
+                  </select>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+         
+          <a (click)='limparCampos()' data-bs-dismiss="modal" class="text-decoration-none "> Fechar</a>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)='cadastrarMateria()'>Cadastrar matéria</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <!-- Modal criar postagem -->
+   <div class="modal fade" id="addPostagem" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">ADICIONAR NOVA AULA</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-12">
+                    <div class="form-group mb-3">
+                        <input [(ngModel)]='postagem.titulo' type="text" class="form-control"  placeholder="Título da aula">
+                    </div>
+
+                    <div class="form-group mb-3">
+                      <textarea [(ngModel)]='postagem.descricao' type="text" class="form-control"  placeholder="Descrição da aula" rows="4"></textarea>
+                    </div>
+
+                    <div class="form-group mb-3">
+                    <input [(ngModel)]='postagem.link_video' type="text" class="form-control"  placeholder="Link do conteúdo">
+                    </div>
+                    <div class="form-group mb-3">
+                      <select name="Escolha o ano" (change)='getTemaAno($event)' class="form-select mt-1" >
+                          <option value="">Escolha o ano</option>
+                          <option  value="1º ano" >1º ano</option>
+                          <option  value="2º ano" >2º ano</option>
+                          <option  value="3º ano" >3º ano</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                        <select name="" (change)='postTemaId($event)' class="form-select" id="" >
+                            <option value="">Escolha a matéria</option>
+                            <option *ngFor='let items of listaTemas' value="{{items.id}}" >{{items.materia}}</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <a (click)='limparCampos()' data-bs-dismiss="modal" class="text-decoration-none "> Fechar</a>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)='cadastrarPostagem()'>Adicionar aula</button>
+        </div>
+      </div>
+    </div>
+  </div>

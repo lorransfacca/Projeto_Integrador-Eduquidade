@@ -1,0 +1,17 @@
+.fazul{
+    color: #0b5575;
+}
+
+.fonte-t{
+    color: #7a7979;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400px;
+    font-size: 14px;
+    font-style: italic;
+    margin-top: 4px;
+  }
+
+.sombra {
+    -webkit-box-shadow: inset -1px 3px 8px 5px #1F87FF, 2px 5px 16px 0px #0B325E, 5px 5px 15px 5px rgba(0,0,0,0); 
+    box-shadow: inset -1px 3px 8px 5px #1F87FF, 2px 5px 16px 0px #0B325E, 5px 5px 15px 5px rgba(0,0,0,0);
+}

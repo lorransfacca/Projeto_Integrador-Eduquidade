@@ -1,0 +1,151 @@
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-navbar">
+    <!-- rgba(0, 119, 255, 0.849) -->
+    <div class="container-fluid">
+
+        <!-- BOTÃO SIDEBAR -->
+        <div class="nav-item p-0 m-0">
+
+            <button class="btn btn-white ms-2" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"><span
+                    class="navbar-toggler-icon"></span></button>
+        </div>
+
+        <!-- LOGO -->
+        <div class="nav-item p-0 m-0">
+            <a class="navbar-brand m-3" data-bs-dismiss="offcanvas" routerLink='/plataforma'><img src="../../assets/img/EDQbrancoAjustado.png"
+                height="38px" alt="Logo EDQ"></a>
+        </div>
+
+        <!-- FORM PESQUISA -->
+        <!-- <div class="navbar-nav me-auto mb-0 mb-lg-0 d-flex align-items-center">
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Busca..." aria-label="Search">
+                <button class="btn btn-outline-light" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                        height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                    </svg></button>
+            </form>
+        </div> -->
+
+        <!-- DROPDOWN EDITAR USUÁRIO-->
+        <div class="collapse navbar-collapse">
+            <div class="nav-item ms-auto me-2 mb-0 mt-0 pt-0 pb-0 dropdown">
+                <a class="nav-link dropdown-toggle text-white p-0" id="navbarDarkDropdownMenuLink" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false"><img src={{foto}} alt="Foto de perfil" width="45px"
+                        height="45px" class="rounded-circle border border-4">⠀{{nome}}
+                </a>
+                <ul class="dropdown-menu dropdown-menu-lg-end dropdown-menu-light"
+                    aria-labelledby="navbarDarkDropdownMenuLink">
+                    <li><a class="dropdown-item text-center" [routerLink]="['/user-edit', id]">Editar usuário</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- BOTAO LOGOUT -->
+            <div class="nav-item p-0">
+                <a (click)='sair()'>
+                    <button type="submit" class="btn btn-outline-light ms-5 me-2">Sair
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-box-arrow-right ms-1" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
+                            <path fill-rule="evenodd"
+                                d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
+                        </svg>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+
+        <!-- SIDEBAR HEADER-->
+        <div class="offcanvas-header bg-navbar text-white">
+            <h6 class="offcanvas-title ms-2 text-center" id="offcanvasExampleLabel"><a class="navbar-brand"
+                routerLink='/plataforma' data-bs-dismiss="offcanvas"><img src="../../assets/img/EDQbrancoAjustado.png" width="60px" alt="Logo EDQ"></a><br>A
+                plataforma que iguala seu conhecimento
+            </h6>
+            <button type="button mb-5" class="btn-close btn-outline-light text-reset" data-bs-dismiss="offcanvas"
+                aria-label="Close">
+            </button>
+        </div>
+
+        <!-- SIDEBAR BODY-->
+        <div class="offcanvas-body text-center">
+            <a class="text-reset mb-3 text-decoration-none" data-bs-dismiss="offcanvas" routerLink='/plataforma'>
+                <h5>Home</h5>
+            </a>
+            <hr>
+            <a *ngIf='auth.adm()' class="text-reset text-decoration-none mt-0 mb-3" data-bs-dismiss="offcanvas" routerLink='/materias'>
+                <h5>Matérias</h5>
+            </a>
+            <hr *ngIf='auth.adm()'>
+
+            <a *ngIf='auth.adm()' class="text-reset  text-decoration-none mb-3" data-bs-dismiss="offcanvas" routerLink='/postagens'>
+                <h5>Aulas</h5>
+            </a>
+            <hr *ngIf='auth.adm()'>
+        </div>
+
+
+        <nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-cinza">
+
+                <!-- FOTO USUÁRIO -->
+                <div class="nav-item me-2 ms-2 mb-0 mt-0 pt-0 pb-0 dropdown">
+                    <a class="nav-link dropdown-toggle text-dark p-0" id="navbarDarkDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false"><img src={{foto}} alt="Foto de perfil" width="45px"
+                            height="45px" class="rounded-circle border border-white border-4">⠀{{nome}}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-lg-center"
+                        aria-labelledby="navbarDarkDropdownMenuLink">
+                        <li><a class="dropdown-item text-center" data-bs-dismiss="offcanvas" [routerLink]="['/user-edit', id]">Editar Usuário</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-item p-2 ms-auto me-3 d-flex align-items-center">
+                    <a (click)='sair()'>
+                        <button type="submit" class="btn btn-outline-danger" data-bs-dismiss="offcanvas">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-box-arrow-right ms-1" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
+                                <path fill-rule="evenodd"
+                                    d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
+                            </svg>
+                        </button>
+                    </a>
+                </div>
+         </nav>
+
+        <!-- SIDEBAR FOOTER -->
+        <div class="offcanvas-footer bg-navbar text-white text-center">
+            <div class="col-md-12 mt-3 mb-2">
+                <a href="mailto:EDQ.contato@gmail.com?Subject=Mensagem%20de%20{{nome}}" class="me-2 text-reset"
+                    target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                        class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z" />
+                    </svg>
+                </a>
+                <a href="https://github.com/JuRibeiro/EDQ-Angular" class="ms-2 text-reset" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                        class="bi bi-github" viewBox="0 0 16 16">
+                        <path
+                            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                    </svg>
+                </a>
+
+            </div>
+            <div class="text-center">
+                © 2021 Todos os direitos reservados:
+                <a class="text-reset fw-bold" href="https://brazil.generation.org/"
+                    target="_blank">brazil.generation.org</a>
+            </div>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,71 @@
+<!-- COMPONENTE POSTAGENS -->
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- HEADER -->
+        <div class="col-md-12 bg-navbar text-white">
+            <h1 class="fontsize54 text-center">Aulas</h1>
+            <h5 class="fontsize18 text-center mb-4">Veja todos as aulas cadastradas</h5>
+        </div>
+        
+        <!-- /HEADER -->
+
+        <!-- PESQUISA -->
+        <div class="row mt-5 d-flex justify-content-center align-items-center">
+            <div class="col-md-10 d-flex justify-content-center align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi      bi-search" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>
+                <div class="form-group ms-3">
+                    <input type="text" class="form-control" id="titulo" placeholder="Busca de aulas por título..." [(ngModel)]='tituloPost' (keyup)='findByTituloPostagem()'>
+                </div>
+            </div>
+        </div>
+        <!-- /PESQUISA -->
+
+        <!-- TABELA -->
+        <div class="row mt-3 mb-5 d-flex justify-content-center">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-hover text-center align-middle">
+                        <thead>
+                            <tr>
+                                <th scope="col">Título</th>
+                                <th scope="col">Matéria</th>
+                                <th scope="col">Ano do conteúdo</th>
+                                <th scope="col">Autor</th>
+                                <th scope="col">Data e hora</th>
+                                <th scope="col">Link do vídeo</th>
+                                <th scope="col">Modificações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor='let postagem of listaPostagens'>
+                                <th>{{postagem.titulo}}</th>
+                                <td>{{postagem.tema.materia}}</td>
+                                <td>{{postagem.tema.anoConteudo}}</td>
+                                <td>{{postagem.usuario.nomeCompleto}}</td>
+                                <td>{{postagem.data_postagem | date: 'dd/MM/yyyy'}} às {{postagem.data_postagem | date:
+                                    'HH:mm'}}</td>
+                                <td>{{postagem.link_video}}</td>
+                                <td class='mb-2'>
+                                    <button class="btn btn-info m-1 w-75 text-white"
+                                        [routerLink]="['/postagem-edit', postagem.id]">Editar</button>
+                                    <button class="btn btn-danger m-1 w-75"
+                                        [routerLink]="['/postagem-delete', postagem.id]">Apagar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="mt-5">
+                        <button routerLink='/plataforma' class="btn btn-secondary text-white text-left">
+                            <i class="fa fa-angle-double-left" aria-hidden="true"></i>⠀⠀Voltar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /TABELA -->
+        
+    </div>
+</div>
+<!-- /COMPONENTE POSTAGENS -->
